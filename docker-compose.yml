@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  server:
+    build:
+      context: .
+      dockerfile: server/.dockerfile
+    ports:
+      - '80:80'
+    image: pow/server:latest
+    restart: 'no'
+    links:
+      - client
+
+  client:
+    build:
+      context: .
+      dockerfile: client/.dockerfile
+    image: pow/client:latest
+    restart: 'no'  
